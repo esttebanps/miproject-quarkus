@@ -2,7 +2,7 @@ openapi: 3.0.1
 servers:
   - description: Index swagger
     #url local
-    #- url: https://localhost:8080
+    #url: https://localhost:8080
     #url produccion
     url: https://api.samtel.co
 info:
@@ -119,7 +119,7 @@ paths:
         "404":
           description: "No se encuentra la novedad."
 #--------------------------------------------------------------------------------
-#------------------------------------ACTUALIZAR USUARIO--------------------
+#------------------------------------ACTUALIZAR USUARIO--------------------------
 
   /v1/es/actualizar/usuario/{idtbl_user}:
     put:

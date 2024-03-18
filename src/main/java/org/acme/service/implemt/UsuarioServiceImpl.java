@@ -30,48 +30,27 @@ public class UsuarioServiceImpl implements IUsuarioService {
 
     @Transactional
     public List<UsuarioTypeResponse> crearUsuario(UsuarioTypeInput usuarioTypeInput) {
-        try {
-            Usuario usuario = usuarioMapper.usuarioTypeToEntity(usuarioTypeInput);
-            LOG.info("Guardando usuario...");
-            usuarioDao.persist(usuario);
-            LOG.info("Fin creacion usuario");
-            return usuarioMapper.usuarioEntityToTypeResponse(usuario);
-        } catch (ApplicationException e) {
-            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
-        }
+        Usuario usuario = usuarioMapper.usuarioTypeToEntity(usuarioTypeInput);
+        usuarioDao.persist(usuario);
+        return usuarioMapper.usuarioEntityToTypeResponse(usuario);
     }
 
     @Transactional
     public void eliminarUsuario(Integer idtblUser) {
-        try {
-            Long id = Long.valueOf(idtblUser);
-            usuarioDao.deleteById(id);
-        } catch (ApplicationException e) {
-            LOG.error("Se presento un error al listar usuario por id" + e.getMessage());
-            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
-        }
+        Long id = Long.valueOf(idtblUser);
+        usuarioDao.deleteById(id);
     }
 
     @Transactional
     public List<UsuarioTypeResponse> listarUsuarios() {
-        try {
-            List<Usuario> usuarios = usuarioDao.listAll();
-            return usuarioMapper.usuariosTypeListEntityToTypeResponse(usuarios);
-        } catch (ApplicationException e) {
-            LOG.error("Se presento un error al listar usuarios " + e.getMessage());
-            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
-        }
+        List<Usuario> usuarios = usuarioDao.listAll();
+        return usuarioMapper.usuariosTypeListEntityToTypeResponse(usuarios);
     }
 
     @Transactional
     public List<UsuarioTypeResponse> listarUsuario(Integer idtblUser) {
-        try {
-            Usuario usuario = usuarioDao.findById(Long.valueOf(idtblUser));
-            return usuarioMapper.usuarioEntityToTypeResponse(usuario);
-        } catch (ApplicationException e) {
-            LOG.error("Se presento un error al listar usuarios " + e.getMessage());
-            throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
-        }
+        Usuario usuario = usuarioDao.findById(Long.valueOf(idtblUser));
+        return usuarioMapper.usuarioEntityToTypeResponse(usuario);
     }
 
     @Transactional

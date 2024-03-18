@@ -28,49 +28,63 @@ public class UsuarioController implements V1UsuarioApi {
     @Override
     public List<UsuarioTypeResponse> crearUsuario(UsuarioTypeInput usuarioTypeInput) {
         try {
-            LOG.info("Inicio creacion usuario");
-            return usuarioService.crearUsuario(usuarioTypeInput);
+            LOG.info("Inicia creacion usuario");
+            List<UsuarioTypeResponse> usuario = usuarioService.crearUsuario(usuarioTypeInput);
+            LOG.info("Fin creacion usuario");
+            return usuario;
         } catch (ApplicationException e) {
-            LOG.error("Se identifico error en el servicio ");
+            LOG.error("Se identifico un error en el servicio " + e.getMessage());
             throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
         }
     }
+
     @Override
     public void eliminarUsuario(Integer idtblUser) {
         try {
+            LOG.info("Inicia eliminación usuario");
             usuarioService.eliminarUsuario(idtblUser);
+            LOG.info("Finaliza eliminación usuario");
         } catch (ApplicationException e) {
-            LOG.error("Se presento un error al listar usuario por id" + e.getMessage());
+            LOG.error("Se identifico un error en el servicio " + e.getMessage());
             throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
         }
     }
+
     @Override
     public List<UsuarioTypeResponse> listarTodosLosUsuario() {
-        LOG.info("Inicia listarTodosLosUsuario");
         try {
-            return usuarioService.listarUsuarios();
+            LOG.info("Inicia listar todos los usuarios");
+            List<UsuarioTypeResponse> usuarios = usuarioService.listarUsuarios();
+            LOG.info("Finaliza listar todos los usuarios");
+            return usuarios;
         } catch (ApplicationException e) {
-            LOG.error("Se presento un error al listar usuario por id" + e.getMessage());
+            LOG.error("Se identifico un error en el servicio " + e.getMessage());
             throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
         }
     }
+
     @Override
     public List<UsuarioTypeResponse> listarUsuario(Integer idtblUser) {
-        LOG.info("Inicia listarUsuarioImpl");
         try {
-            return usuarioService.listarUsuario(idtblUser);
+            LOG.info("Inicia listar usuario");
+            List<UsuarioTypeResponse> usuario = usuarioService.listarUsuario(idtblUser);
+            LOG.info("Finaliza listar usuario");
+            return usuario;
         } catch (ApplicationException e) {
-            LOG.error("Se presento un error al listar usuario por id" + e.getMessage());
+            LOG.error("Se identifico un error en el servicio " + e.getMessage());
             throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
         }
     }
+
     @Override
-    public List<UsuarioTypeResponse> actualizarUsuario(Integer idtblUser, UsuarioTypeInput usuarioTypeInput){
-        LOG.info("Inicia listarUsuarioImpl");
+    public List<UsuarioTypeResponse> actualizarUsuario(Integer idtblUser, UsuarioTypeInput usuarioTypeInput) {
         try {
-            return usuarioService.actualizarUsuario(idtblUser, usuarioTypeInput);
+            LOG.info("Inicia actualizar usuario");
+            List<UsuarioTypeResponse> usuario = usuarioService.actualizarUsuario(idtblUser, usuarioTypeInput);
+            LOG.info("Inicia actualizar usuario");
+            return usuario;
         } catch (ApplicationException e) {
-            LOG.error("Se presento un error al listar usuario por id" + e.getMessage());
+            LOG.error("Se identifico un error en el servicio " + e.getMessage());
             throw new ApplicationException(ERROR_SERVICIO + e.getMessage());
         }
     }
