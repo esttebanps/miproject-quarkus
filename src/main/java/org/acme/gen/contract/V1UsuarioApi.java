@@ -17,32 +17,32 @@ import jakarta.validation.Valid;
 
 
 @Path("/v1/es")
-@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-18T09:09:30.005916800-05:00[America/Bogota]")
+@jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2024-03-18T16:20:03.200590300-05:00[America/Bogota]")
 public interface V1UsuarioApi {
 
     @PUT
     @Path("/actualizar/usuario/{idtbl_user}")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    List<UsuarioTypeResponse> actualizarUsuario(@PathParam("idtbl_user") @Min(1) Integer idtblUser,@Valid UsuarioTypeInput usuarioTypeInput);
+    Response actualizarUsuario(@PathParam("idtbl_user") @Min(1) Integer idtblUser,@Valid UsuarioTypeInput usuarioTypeInput);
 
     @POST
     @Path("/usuario")
     @Consumes({ "application/json" })
     @Produces({ "application/json" })
-    List<UsuarioTypeResponse> crearUsuario(@Valid UsuarioTypeInput usuarioTypeInput);
+    Response crearUsuario(@Valid UsuarioTypeInput usuarioTypeInput);
 
     @DELETE
     @Path("/eliminar/usuario/{idtbl_user}")
-    void eliminarUsuario(@PathParam("idtbl_user") @Min(1) Integer idtblUser);
+    Response eliminarUsuario(@PathParam("idtbl_user") @Min(1) Integer idtblUser);
 
     @GET
     @Path("/usuarios")
     @Produces({ "application/json" })
-    List<UsuarioTypeResponse> listarTodosLosUsuario();
+    Response listarTodosLosUsuario();
 
     @GET
     @Path("/usuario/{idtbl_user}")
     @Produces({ "application/json" })
-    List<UsuarioTypeResponse> listarUsuario(@PathParam("idtbl_user") @Min(1) Integer idtblUser);
+    Response listarUsuario(@PathParam("idtbl_user") @Min(1) Integer idtblUser);
 }
